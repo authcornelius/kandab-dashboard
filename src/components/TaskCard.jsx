@@ -4,6 +4,7 @@ import Avatar1 from '/342859196_239392802007511_7687622644463172425_n1.jpg'
 import Avatar2 from '/342859196_239392802007511_7687622644463172425_n1.jpg'
 import Avatar3 from '/342859196_239392802007511_7687622644463172425_n1.jpg'
 import Avatar4 from '/342859196_239392802007511_7687622644463172425_n1.jpg'
+import PropTypes from "prop-types";
 
 
 export default function TaskCard({ data }) {
@@ -42,4 +43,8 @@ export default function TaskCard({ data }) {
         </div>
     </div>
   )
+}
+
+TaskCard.propTypes = {
+  data: PropTypes.object
 }

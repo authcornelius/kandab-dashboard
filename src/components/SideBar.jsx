@@ -52,7 +52,7 @@ export default function SideBar() {
 
         <div className='space-x-2 border border-[#CBD5E1] flex flex-row rounded-full p-[12px]'>
           <CiSearch className='my-auto' size={17} />
-          <input placeholder='Search...' className='medium-custom-font' />
+          <input placeholder='Search...' className='medium-custom-font focus:outline-none' />
         </div>
 
         <div>

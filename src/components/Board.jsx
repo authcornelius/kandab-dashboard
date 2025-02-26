@@ -1,7 +1,6 @@
 import { CiSearch } from "react-icons/ci"
 import { HiPlus } from "react-icons/hi"
 import { PiShareNetworkBold, PiUploadBold } from "react-icons/pi"
-import { NavLink } from "react-router-dom"
 import TaskCard from "./TaskCard"
 import { taskData } from "../data"
 import { Form, Input, Modal, Select } from "antd"
@@ -12,6 +11,8 @@ const Board = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [ isModalUpdate, setIsModalUpdate] = useState(false);
   const [ status, setStatus] = useState('');
+  const [activeFilter, setActiveFilter] = useState('By Status');
+
   const [form] = Form.useForm();
   const data = taskData
 
@@ -167,22 +168,29 @@ const Board = () => {
         </div>
       </div>
       
-      <div className="px-4 md:px-8 py-[14px] border-b-2 border-gray-200 overflow-x-auto scrollbar-hide lg:flex lg:justify-between">
-        <div className="space-x-2.5 whitespace-nowrap my-auto mt-5">
+      <div className="px-4 md:px-8 border-b-2 border-gray-200 overflow-x-auto scrollbar-hide lg:flex lg:justify-between mt-5">
+        <div className="space-x-2.5 whitespace-nowrap my-auto">
           {filterType.map((item, index) => (
-            <NavLink
+            <button
               key={index}
-              className="bold-custom-font py-4 pr-4 text-[#475569] border-b-2 border-gray-300"
+              onClick={() => setActiveFilter(item.name)}
+              className={
+                activeFilter === item.name
+                  ? "cursor-pointer bold-custom-font py-4 pr-4 text-[#4F46E5] border-b-2 border-[#4F46E5]"
+                  : "cursor-pointer bold-custom-font py-4 pr-4 text-[#475569] border-b-2 border-gray-300"
+              }
             >
-              {item.name}
-            </NavLink>
+              <span className="px-2">
+                {item.name}
+              </span>
+            </button>
           ))}
         </div>
 
-        <div className="hidden lg:flex space-x-2">
+        <div className="hidden lg:flex space-x-2 my-auto">
           <h1 className="my-auto bold-custom-font text-[#1E293B]">Sort By </h1>
-          <div className="border border-[#CBD5E1] rounded-full p-[10px] w-[98px]">
-            <select className="my-auto semi-bold-custom-font text-[#475569]">
+          <div className="border border-[#CBD5E1] rounded-full mb-2 p-[10px] w-[98px] my-auto">
+            <select className="semi-bold-custom-font text-[#475569] focus:outline-none">
               <option>Newest</option>
               <option>Old</option>
             </select>
